@@ -69,7 +69,7 @@ const Dashboard = () => {
       if (platform.includes("Instagram"))
         streamKeys.instagramKey = instagramKey;
 
-      const response = await fetch("http://localhost:3000/start-stream", {
+      const response = await fetch("https://streamease-server.vercel.app/start-stream", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -103,7 +103,7 @@ const Dashboard = () => {
     if (mediaRecorder) {
       mediaRecorder.stop();
       setMediaRecorder(null);
-      await fetch("http://localhost:3000/stop-stream", {
+      await fetch("https://streamease-server.vercel.app/stop-stream", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
