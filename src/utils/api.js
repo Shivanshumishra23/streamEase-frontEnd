@@ -1,8 +1,8 @@
 import { Axios } from "../axios/axios";
 
 
-// export const api="https://careercef-server.vercel.app/api/v1"
-export const api="http://localhost:3000/api/v1"
+export const api="https://streamease-server.vercel.app/api/v1"
+// export const api="http://localhost:3000/api/v1"
 
 
 
