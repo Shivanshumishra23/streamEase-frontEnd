@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import { FaVideoSlash } from "react-icons/fa";
 import "tailwindcss/tailwind.css";
 
-const socket = io("http://localhost:3000");
+const socket = io("https://streamease-server.vercel.app");
 
 const Dashboard = () => {
   const userVideo = useRef(null);
