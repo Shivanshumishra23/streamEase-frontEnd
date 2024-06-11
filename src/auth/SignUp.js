@@ -109,6 +109,15 @@ const SignUp = () => {
             Login
           </a>
         </div>
+        <div className="text-sm text-center text-gray-600">
+          Go back to{" "}
+          <a
+            href="/"
+            className="text-blue-500 hover:underline"
+          >
+            Home
+          </a>
+        </div>
       </div>
     </div>
   );

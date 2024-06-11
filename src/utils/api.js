@@ -1,9 +1,12 @@
 import { Axios } from "../axios/axios";
 
 
-export const api="https://streamease-server.vercel.app/api/v1"
+// export const api="https://streamease-server.vercel.app/api/v1"
+export const api="http://52.66.244.24:3000/api/v1"
 // export const api="http://localhost:3000/api/v1"
-
+// export const api2 = "https://streame-server.vercel.app"
+export const api2 = "http://52.66.244.24:3000"
+// export const api2 = "http://localhost:3000"
 
 
 export const isAuthenticated = () => {
