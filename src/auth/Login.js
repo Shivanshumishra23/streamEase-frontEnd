@@ -15,6 +15,7 @@ const Login = () => {
 
   const validate = () => {
     const newErrors = {};
+
     if (!username) newErrors.username = "Username is required";
     if (!password) newErrors.password = "Password is required";
     return newErrors;
@@ -38,10 +39,12 @@ const Login = () => {
         }
       );
       if (resp?.status === 200) {
-        const expirationTime = Date.now() + (1 * 60 * 1000);
+        const expirationTime = Date.now() + 60 * 60 * 1000;
         localStorage.setItem("userAuth", JSON.stringify(resp?.data?.data));
+        const { accessToken } = resp?.data?.data;
+        localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("userAuthExpiration", expirationTime);
-        navigate("/dashboard");
+        navigate("/dashboard/keys");
         window.location.reload();
       }
     } catch (error) {
@@ -56,7 +59,10 @@ const Login = () => {
         <h2 className="text-2xl font-bold text-center text-gray-700">Login</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="username"
+              className="block text-sm font-medium text-gray-700"
+            >
               Username
               <span className="text-red-600">*</span>
             </label>
@@ -67,14 +73,19 @@ const Login = () => {
               placeholder="Enter your username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className={`w-full px-4 py-2 text-gray-700 bg-gray-200 border rounded-md focus:border-blue-500 focus:bg-white focus:outline-none ${errors.username && "border-red-500"}`}
+              className={`w-full px-4 py-2 text-gray-700 bg-gray-200 border rounded-md focus:border-blue-500 focus:bg-white focus:outline-none ${
+                errors.username && "border-red-500"
+              }`}
             />
             {errors.username && (
               <p className="text-sm text-red-600">{errors.username}</p>
             )}
           </div>
           <div className="space-y-2">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
               Password
               <span className="text-red-600">*</span>
             </label>
@@ -85,7 +96,9 @@ const Login = () => {
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className={`w-full px-4 py-2 text-gray-700 bg-gray-200 border rounded-md focus:border-blue-500 focus:bg-white focus:outline-none ${errors.password && "border-red-500"}`}
+              className={`w-full px-4 py-2 text-gray-700 bg-gray-200 border rounded-md focus:border-blue-500 focus:bg-white focus:outline-none ${
+                errors.password && "border-red-500"
+              }`}
             />
             {errors.password && (
               <p className="text-sm text-red-600">{errors.password}</p>
@@ -102,19 +115,13 @@ const Login = () => {
         </form>
         <div className="text-sm text-center text-gray-600">
           Don't have an account?{" "}
-          <a
-            href="/signup"
-            className="text-blue-500 hover:underline"
-          >
+          <a href="/signup" className="text-blue-500 hover:underline">
             Sign up
           </a>
         </div>
         <div className="text-sm text-center text-gray-600">
           Go back to{" "}
-          <a
-            href="/"
-            className="text-blue-500 hover:underline"
-          >
+          <a href="/" className="text-blue-500 hover:underline">
             Home
           </a>
         </div>

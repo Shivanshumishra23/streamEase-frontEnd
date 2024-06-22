@@ -1,5 +1,5 @@
 import axios from "axios";
-import { api, isAuthenticated } from "../utils/api";
+import {api ,api2, isAuthenticated } from "../utils/api";
 
 
 const Axios = axios.create({
@@ -8,4 +8,9 @@ const Axios = axios.create({
  
 });
 
-export { Axios };
+const Axios2 = axios.create({
+  baseURL: api2,
+  withCredentials: true,
+ 
+});
+export { Axios, Axios2 };

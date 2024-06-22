@@ -2,7 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html.dark {
+  --bg-color: #1a202c; /* Dark background */
+  --text-color: #f7fafc; /* Light text */
+}
 
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
 
 body {
   margin: 0;
